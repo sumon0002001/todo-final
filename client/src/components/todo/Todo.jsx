@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./todo.css";
 
 const Todo = () => {
+  const [input, setInput] = useState({ title: "", body: "" });
   const show = () => {
     document.getElementById("textarea").style.display = "block";
+  };
+
+  const change = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+
+  const submit = () => {
+    console.log(input);
+    setInput({ title: "", body: "" });
   };
   return (
     <div className="todo">
@@ -13,17 +24,25 @@ const Todo = () => {
             type="text"
             placeholder="Title"
             className="my-2 p-2 todo-inputs"
+            name="title"
+            value={input.title}
+            onChange={change}
             onClick={show}
           />
           <textarea
             id="textarea"
             type="text"
             placeholder="Body"
+            name="body"
+            value={input.body}
+            onChange={change}
             className="p-2 todo-inputs"
           />
         </div>
-        <div>
-          <button className="home-btn">Add</button>
+        <div className="w-50 d-flex justify-content-end my-3">
+          <button className="home-btn px-2 py-1" onClick={submit}>
+            Add
+          </button>
         </div>
       </div>
     </div>
