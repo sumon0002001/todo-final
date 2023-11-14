@@ -16,5 +16,32 @@
 
 #textarea {
   display: none;
+}
 
+.todo-card {
+  border: 1px solid black;
+}
+
+.todo-card {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.card-icons{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.del {
+  color: red;
+}
+
+.card-icons-head{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card-icons-head:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
 }

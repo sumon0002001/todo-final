@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./todo.css";
+import TodoCards from "./TodoCards";
 
 const Todo = () => {
   const [input, setInput] = useState({ title: "", body: "" });
+  const [array, setArray] = useState([]);
   const show = () => {
     document.getElementById("textarea").style.display = "block";
   };
@@ -13,9 +15,10 @@ const Todo = () => {
   };
 
   const submit = () => {
-    console.log(input);
+    setArray([...array, input]);
     setInput({ title: "", body: "" });
   };
+  console.log(array);
   return (
     <div className="todo">
       <div className="todo-main container d-flex justify-content-center align-items-center my-4 flex-column">
@@ -43,6 +46,18 @@ const Todo = () => {
           <button className="home-btn px-2 py-1" onClick={submit}>
             Add
           </button>
+        </div>
+      </div>
+      <div className="todo-body">
+        <div className="container-fluid">
+          <div className="row ">
+            {array &&
+              array.map((item, index) => (
+                <div className="col-lg-3 col-10 mx-5 my-2">
+                  <TodoCards title={item.title} body={item.body} />
+                </div>
+              ))}
+          </div>
         </div>
       </div>
     </div>
